@@ -49,7 +49,7 @@ sub match {
   } else {
     @ra = map { [ $_, $self->matchscalar($expr, $_) ] } @$pa;
   }
-  @ra = sort { $b->[$#{@$b}] <=> $a->[$#{@$a}] } @ra;
+  @ra = sort { $b->[-1] <=> $a->[-1] } @ra;
   return wantarray ? @ra : \@ra;
 }
 
