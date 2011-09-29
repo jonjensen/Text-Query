@@ -8,6 +8,9 @@ use Text::Query;
 
 plan test => 56;
 
+# Adapt to Perl 5.14+ regular expression stringification changes (see perlre docs)
+my $re_flags = ($] >= 5.014) ? '?^s:' : '?s-xim:';
+
 #
 # ParseSimple logic
 #
@@ -22,19 +25,19 @@ if ($]>=5.005)
 
     $question = "word1";
     $query->prepare($question);
-    ok($query->matchstring(), "(?s-xim:(?i)word1(?{[-1,1]}))", "prepare $question");
+    ok($query->matchstring(), "($re_flags(?i)word1(?{[-1,1]}))", "prepare $question");
     ok($query->match("take my word1bla pal"), 1, "solve match $question");
     ok($query->match("take my lies pal"), 0, "solve no match $question");
 
     $question = "+word1 +word2";
     $query->prepare($question);
-    ok($query->matchstring(), "(?s-xim:(?i)word1(?{[-2,1]})|word2(?{[-3,1]}))", "prepare $question");
+    ok($query->matchstring(), "($re_flags(?i)word1(?{[-2,1]})|word2(?{[-3,1]}))", "prepare $question");
     ok($query->match("take word2 my word1 and pal"), 2, "solve match $question");
     ok($query->match("take my lies word2 pal"), 0, "solve no match $question");
 
     $question = "+word1 word2 -word3";
     $query->prepare($question);
-    ok($query->matchstring(), "(?s-xim:(?i)word1(?{[-2,1]})|word2(?{[-1,1]})|word3(?{[0,1]}))", "prepare $question");
+    ok($query->matchstring(), "($re_flags(?i)word1(?{[-2,1]})|word2(?{[-1,1]})|word3(?{[0,1]}))", "prepare $question");
     ok($query->match("take my word1 and word2 pal"), 2, "solve match 1 $question");
     ok($query->match("take my word1 pal"), 1, "solve match 2 $question");
     ok($query->match("take word1 my word1 pal"), 2, "solve match 3 $question");
@@ -46,26 +49,26 @@ if ($]>=5.005)
     #
     $question = "word1 word2";
     $query->prepare($question, -whole => 1);
-    ok($query->matchstring(), '(?s-xim:(?i)\bword1\b(?{[-1,1]})|\bword2\b(?{[-1,1]}))', "prepare $question");
+    ok($query->matchstring(), "($re_flags(?i)" . '\bword1\b(?{[-1,1]})|\bword2\b(?{[-1,1]}))', "prepare $question");
     ok($query->match("take my Word1 and Word2 pal"), 2, "solve match $question");
     ok($query->match("take my word1flux word2blux pal"), 0, "solve no match $question");
 
     # This does not work properly $question = 'word\d+' + is an operator ...
     $question = 'word\d*';
     $query->prepare($question, -regexp => 1, -whole => 1);
-    ok($query->matchstring(), '(?s-xim:(?i)(?:\bword\d*\b)(?{[-1,1]}))', "prepare $question");
+    ok($query->matchstring(), "($re_flags(?i)" . '(?:\bword\d*\b)(?{[-1,1]}))', "prepare $question");
     ok($query->match("take my word1 and word2 pal"), 2, "solve match $question");
     ok($query->match("take my word1flux word2blux pal"), 0, "solve no match $question");
     
     $question = "word1 word2";
     $query->prepare($question, -case => 1, -whole => 0, -regexp => 0);
-    ok($query->matchstring(), '(?s-xim:word1(?{[-1,1]})|word2(?{[-1,1]}))', "prepare $question");
+    ok($query->matchstring(), "(${re_flags}word1(?{[-1,1]})|word2(?{[-1,1]}))", "prepare $question");
     ok($query->match("take my word1 and word2 pal"), 2, "solve match $question");
     ok($query->match("take my Word1 And Word2 pal"), 0, "solve no match $question");
 
     $question = 'word1\ word2';
     $query->prepare($question, -litspace => 1, -case => 0);
-    ok($query->matchstring(), '(?s-xim:(?i)word1\\\\\ word2(?{[-1,1]}))', "prepare $question");
+    ok($query->matchstring(), "($re_flags(?i)" . 'word1\\\\\ word2(?{[-1,1]}))', "prepare $question");
     ok($query->match("take my word1\\ word2 pal"), 1, "solve match $question");
     ok($query->match("take my word1    word2 pal"), 0, "solve no match $question");
 
