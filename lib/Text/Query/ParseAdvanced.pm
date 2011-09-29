@@ -111,7 +111,7 @@ sub factor($) {
 	}
     } elsif($t =~ /^($not|!)$/i) {
 	$self->{'token'} = shift(@{$self->{'tokens'}});
-	$rv = $self->build_negation(factor($self));
+	$rv = $self->build_negation($self->factor());
     } elsif($t =~ s/^\e//) {
 	$rv = $self->build_literal($t);
 	$self->{'token'} = shift(@{$self->{'tokens'}});
@@ -119,7 +119,7 @@ sub factor($) {
 	$self->{'token'} = shift(@{$self->{'tokens'}});
 	unshift(@{$self->{'scope'}}, ($self->{'scope_map'}{$t} || $t));
 	$self->build_scope_start();
-	$rv = $self->build_scope_end(factor($self));
+	$rv = $self->build_scope_end($self->factor());
 	shift(@{$self->{'scope'}});
     } else {
 	croak("unexpected token $t in factor");
