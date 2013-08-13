@@ -345,7 +345,7 @@ Text::Query::Optimize(3)
 
 =item https://github.com/jonjensen/Text-Query
 
-=item https://rt.cpan.org//Dist/Display.html?Queue=Text-Query
+=item https://rt.cpan.org/Dist/Display.html?Queue=Text-Query
 
 =back
 
