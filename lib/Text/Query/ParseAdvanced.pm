@@ -1,5 +1,6 @@
 #
 #   Copyright (C) 1999 Eric Bohlman, Loic Dachary
+#   Copyright (C) 2013 Jon Jensen
 #
 #   This program is free software; you can redistribute it and/or modify it
 #   under the terms of the GNU General Public License as published by the
@@ -263,6 +264,8 @@ Text::Query::Parse(3)
 Eric Bohlman (ebohlman@netcom.com)
 
 Loic Dachary (loic@senga.org)
+
+Jon Jensen, jon@endpoint.com
 
 =cut
 
