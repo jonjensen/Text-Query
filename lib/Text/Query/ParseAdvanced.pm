@@ -263,7 +263,7 @@ Text::Query::Parse(3)
 
 Eric Bohlman (ebohlman@omsdev.com)
 
-Loic Dachary (loic@senga.org)
+Loïc Dachary (loic@dachary.org)
 
 Jon Jensen, jon@endpoint.com
 

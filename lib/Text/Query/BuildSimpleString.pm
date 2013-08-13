@@ -134,7 +134,7 @@ Text::Query::Build(3)
 
 Eric Bohlman (ebohlman@omsdev.com)
 
-Loic Dachary (loic@senga.org)
+Loïc Dachary (loic@dachary.org)
 
 =cut
 
