@@ -21,6 +21,8 @@ Revision history for Perl module Text::Query
 0.07  Wed Jun 23 02:30:00 1999
       - Fix tests
 
-0.08  2013-08-13 Jon Jensen <jon@endpoint.com>
+0.08  not released
+
+0.09  2013-08-13 Jon Jensen <jon@endpoint.com>
       - Fix incompatibilities with newer Perl versions.
       - Imported into Git for future maintenance.

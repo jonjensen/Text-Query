@@ -3,7 +3,8 @@
 package Text::Query::Simple;
 
 use strict;
-use vars qw(@ISA);
+use vars qw(@ISA $VERSION);
+$VERSION = '0.09';
 use Text::Query;
 @ISA=qw(Text::Query);
 
