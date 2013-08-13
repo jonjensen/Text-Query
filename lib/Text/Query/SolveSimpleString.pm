@@ -16,10 +16,7 @@
 #   You should have received a copy of the GNU General Public License
 #   along with this program; if not, write to the Free Software
 #   Foundation, 675 Mass Ave, Cambridge, MA 02139, USA. 
-#
-# 
-# $Header: /usr/local/cvsroot/Text-Query/lib/Text/Query/SolveSimpleString.pm,v 1.1.1.1 1999/06/14 11:26:50 loic Exp $
-#
+
 package Text::Query::SolveSimpleString;
 
 BEGIN {

@@ -16,10 +16,7 @@
 #   You should have received a copy of the GNU General Public License
 #   along with this program; if not, write to the Free Software
 #   Foundation, 675 Mass Ave, Cambridge, MA 02139, USA. 
-#
-# 
-# $Header: /usr/local/cvsroot/Text-Query/lib/Text/Query/BuildAdvancedString.pm,v 1.3 1999/06/16 10:32:13 loic Exp $
-#
+
 package Text::Query::BuildAdvancedString;
 
 use strict;
