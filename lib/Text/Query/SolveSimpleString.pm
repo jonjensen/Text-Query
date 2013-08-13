@@ -117,7 +117,7 @@ Slightly faster than C<MATCH> under these circumstances.
 
 =head1 AUTHORS
 
-Eric Bohlman (ebohlman@netcom.com)
+Eric Bohlman (ebohlman@omsdev.com)
 
 Loic Dachary (loic@senga.org)
 

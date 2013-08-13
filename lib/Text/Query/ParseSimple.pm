@@ -157,7 +157,7 @@ Text::Query::Parse(3)
 
 =head1 AUTHORS
 
-Eric Bohlman (ebohlman@netcom.com)
+Eric Bohlman (ebohlman@omsdev.com)
 
 Loic Dachary (loic@senga.org)
 
