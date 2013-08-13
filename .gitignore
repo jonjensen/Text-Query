@@ -1,6 +1,7 @@
-#*#
+*#
 *.swp
 *.old
+Text-Query-*.tar.gz
 
 
 # the following were borrowed from Dancer
